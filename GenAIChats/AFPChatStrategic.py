@@ -23,12 +23,12 @@ def main():
         # azure_oai_key = os.getenv("AZURE_OAI_KEY")
         # azure_oai_deployment = os.getenv("AZURE_OAI_DEPLOYMENT")
         # Get configuration settings 
-        azure_oai_endpoint = 'https://afpmarketrisk.openai.azure.com/'
-        azure_oai_key = 'f2ad9b8845d24348bafd7d369c828dee'
+        azure_oai_endpoint = ''
+        azure_oai_key = ''
         azure_oai_deployment = 'AFPChat4oCreative'
         
         # Azure Blob Storage configuration
-        # blob_service_client = BlobServiceClient(account_url="https://afpmarketrisk.blob.core.windows.net", credential=DefaultAzureCredential())
+        # blob_service_client = BlobServiceClient(account_url="", credential=DefaultAzureCredential())
         # container_client = blob_service_client.get_container_client("afpcreative")
 
         # Initialize the Azure OpenAI client...
@@ -111,14 +111,14 @@ def main():
             return data
 
         # List of specific files to use
-        file_directory = r"C:\Users\skaminski\Documents\03. Projekty\Aramco\Python\Inputfiles"
-#        file_directory = r"C:\Users\skaminski\Deloitte (O365D)\Projekty - General\Aramco - Market Risk - 2024\3. Working files\Notatki\Notatki przesłane do klienta"
+        file_directory = r""
+#        file_directory = r""
         specific_files = [os.path.join(file_directory, f) for f in os.listdir(file_directory) if os.path.isfile(os.path.join(file_directory, f))]
 
         # Fetch data from specified files on local disk
         file_data = get_data_from_local_files(specific_files)
         
-        Instruments_directory=r"C:\Users\skaminski\Documents\03. Projekty\Aramco\Python\xxx"
+        Instruments_directory=r""
         instruments_data = Instruments_directory
 
         # add a sample conversation
@@ -128,7 +128,7 @@ def main():
             **Assistant:** 1. Goal of strategy: reduce the volatility of EBITDA
             2. Detailed description of strategy: please provide a description based on the knowledge you acquired by reading
             the database \n\n{file_data}\n\n please inspire yourself by the description ("zasady zabezpieczania") 
-            of the strategies of PKN Orlen, as well as other files uploaded into the database: \n\n{file_data}\n\n
+            of the strategies of LeadingOilCompany, as well as other files uploaded into the database: \n\n{file_data}\n\n
             3. Hedging execution
             4. Hedging limits: at least a maximum and minimum volume limits should be defined, and potentially 
             an additional limit linked to the Company's risk appetite or target refining margin 
@@ -139,7 +139,7 @@ def main():
             """
         # Create a system message
         system_message = f"""You are an expert in commodity and FX risk management. 
-        You support Aramco Fuels Poland in designing its risk management strategy. You are using a formal, procedural language.
+        You support ClientName in designing its risk management strategy. You are using a formal, procedural language.
         Use the following data as your source of information:\n\n{file_data}\n\n
         In order to assess the specific situation of Aramco Fuels Poland, please rely on the report
         "Review of AFP’s financial risk database and determination of commodity and FX risk exposure"
