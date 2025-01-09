@@ -23,12 +23,12 @@ def main():
         # azure_oai_key = os.getenv("AZURE_OAI_KEY")
         # azure_oai_deployment = os.getenv("AZURE_OAI_DEPLOYMENT")
         # Get configuration settings 
-        azure_oai_endpoint = 'https://afpmarketrisk.openai.azure.com/'
-        azure_oai_key = 'f2ad9b8845d24348bafd7d369c828dee'
+        azure_oai_endpoint = ''
+        azure_oai_key = ''
         azure_oai_deployment = 'AFPChat4oCreative'
         
         # Azure Blob Storage configuration
-        # blob_service_client = BlobServiceClient(account_url="https://afpmarketrisk.blob.core.windows.net", credential=DefaultAzureCredential())
+        # blob_service_client = BlobServiceClient(account_url="", credential=DefaultAzureCredential())
         # container_client = blob_service_client.get_container_client("afpcreative")
 
         # Initialize the Azure OpenAI client...
@@ -111,8 +111,8 @@ def main():
             return data
 
         # List of specific files to use
-        file_directory = r"C:\Users\skaminski\Documents\03. Projekty\Aramco\Python\RandomFiles"
-#        file_directory = r"C:\Users\skaminski\Deloitte (O365D)\Projekty - General\Aramco - Market Risk - 2024\3. Working files\Notatki\Notatki przesłane do klienta"
+        file_directory = r""
+#        file_directory = r""
         specific_files = [os.path.join(file_directory, f) for f in os.listdir(file_directory) if os.path.isfile(os.path.join(file_directory, f))]
 
         # Fetch data from specified files on local disk
@@ -124,7 +124,7 @@ def main():
             """
         # Create a system message
         system_message = f"""You are an expert in commodity and FX risk management. 
-        You support Aramco Fuels Poland in designing its risk management strategy. You are using a formal language.
+        You support in designing its risk management strategy. You are using a formal language.
         Use the following data as your source of information:\n\n{file_data}\n\n
         You should behave and respond in a manner consistent with the 
         following sample conversation:\n\n{sample_conversation}"""
