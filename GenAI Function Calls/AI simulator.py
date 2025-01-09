@@ -75,9 +75,9 @@ selected_model="gpt-4o"
 # tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B-Instruct")  # Replace with your specific model
 
 if selected_model.startswith("gpt-"):
-    openai.api_key = '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'
+    openai.api_key = ''
 else: 
-    client = Client(api_key="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")
+    client = Client(api_key="")
     
 system_message=f"""You are a financial assistant, you return financial data in json-like format: date,value for the asset and time period your user asks. 
 please provide daily frequency of data. do not paste any text in addition to the financial data, unless the user asks you for something else related to the dataset. 
